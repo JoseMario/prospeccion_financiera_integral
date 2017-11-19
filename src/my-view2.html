@@ -23,24 +23,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
+        text-align: center;
         padding: 10px;
       }
     </style>
 
     <div class="card">
       <div class="circle">Auditiva</div>
-      <h1>Bienvenido a la Interfaz Auditiva</h1>
-      <p>Favor de decir su nombre completo</p>
-    </div>
-    <div class="footer">
-      <paper-button raised class="green" on-tap="repetirClick">Repetir</paper-button>
+      <br></br>
+      <div class="card">
+        <h1 >Bienvenido a la Interfaz Auditiva</h1>
+        <p >Favor de decir su nombre completo</p>   
+      </div>
+      <div class="centrado"> 
+        <paper-button raised class="green" on-tap="repetirClick">Repetir</paper-button>
         <paper-button raised class="blue" on-tap="grabarStart">Grabar</paper-button>
         <paper-button raised class="red" on-tap="grabarStop">Stop</paper-button>
-    </div>
-    <voice-player id="audioIntro" accent="es-ES" text="Bienvenido a la Interfaz Auditiva. Favor de decir su nombre completo"></voice-player>
+      </div>
+      <voice-player id="audioIntro" accent="es-ES" text="Bienvenido a la Interfaz Auditiva. Favor de decir su nombre completo"></voice-player>
       <voice-recognition id="audioRecord"></voice-recognition>
-      <paper-input id="audioText" readonly always-float-label label="Reconocimiento de Voz"></paper-input>
+      <paper-input id="audioText" readonly always-float-label label="Reconocimiento de Voz"></paper-input> 
+        
+    </div>
+    
 
   </template>
 

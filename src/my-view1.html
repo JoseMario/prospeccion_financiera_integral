@@ -20,7 +20,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="my-view1">
   <template id="resultList" is="dom-repeat"> 
     <style include="shared-styles">
-
+      :host {
+        display: block;
+        text-align: center;
+        padding: 10px;
+      }
       h1{
         text-align: center;
       }
@@ -54,19 +58,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     <div class="card">
       <div class="circle">
-        <a>1</a>
+        <a>Visual</a>
       </div>
-      <H1>Observe la siguiente frase</H1>
+
       <br></br>
+      <H1>Observe la siguiente frase</H1>
       <div class="card">
         <h1>"Cuadrado"</h1>
 
         <template id="resultList" is="dom-repeat" items="{{textoDinamico}}">
           <h1>{{this.textoDinamico}}</h1> 
           <br></br>
-          <br></br>
         </template>
-
       </div>
       <div style="text-align: center;">    
         <h2>¿Se comprendio la oración?</h2>
