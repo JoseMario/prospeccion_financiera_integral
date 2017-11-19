@@ -8,7 +8,14 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/voice-elements/src/voice-player.html">
+<link rel="import" href="../bower_components/voice-elements/src/voice-recognition.html">
+<link rel="import" href="../bower_components/obvi/voice-button.html">
+
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view2">
@@ -22,16 +29,55 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <div class="circle">2</div>
-      <h1>View Two</h1>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
+      <div class="circle">Auditiva</div>
+      <h1>Bienvenido a la Interfaz Auditiva</h1>
+      <p>Favor de decir su nombre completo</p>
     </div>
+    <div class="footer">
+      <paper-button raised class="green" on-tap="repetirClick">Repetir</paper-button>
+        <paper-button raised class="blue" on-tap="grabarStart">Grabar</paper-button>
+        <paper-button raised class="red" on-tap="grabarStop">Stop</paper-button>
+    </div>
+    <voice-player id="audioIntro" accent="es-ES" text="Bienvenido a la Interfaz Auditiva. Favor de decir su nombre completo"></voice-player>
+      <voice-recognition id="audioRecord"></voice-recognition>
+      <paper-input id="audioText" readonly always-float-label label="Reconocimiento de Voz"></paper-input>
+
   </template>
 
   <script>
     class MyView2 extends Polymer.Element {
       static get is() { return 'my-view2'; }
+
+        repetirClick() {
+            console.log('Repetir Audio');
+            var element = this.$.audioIntro;
+                element.speak();
+        }
+
+        grabarStart() {
+            console.log('Grabar Audio');
+            var element = this.$.audioRecord;
+            element.start();
+            var textOut = this.$.audioText;
+            textOut.textContent = element.detail;
+            console.log(element.detail);
+
+            /*element.addEventListener('result', function(e) {
+                var textOut = this.$.audioText;
+                textOut.textContent = e.detail.result;*/
+        }
+        grabarStop() {
+                console.log('Audio STOP');
+                var element = this.$.audioRecord;
+                element.stop();
+                console.log(element.detail);
+            }
+
+        connectedCallback(){
+            super.connectedCallback();
+            console.log('connectedCallback');
+        }
+
     }
 
     window.customElements.define(MyView2.is, MyView2);

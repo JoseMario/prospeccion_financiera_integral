@@ -35,44 +35,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-icon icon="av:volume-up"></iron-icon>
       </div>
-      <h1>Seleccione la opción correcta</h1>
+      <div style="text-align: center;">
+        <h1>Seleccione la opción correcta</h1>
 
         <template id="resultList" is="dom-repeat" items="{{imagesButtons}}">
-          <paper-icon-button on-click="eventUnique" icon="{{item.icon}}"></paper-icon-button>
+          <paper-icon-button on-tap="eventUnique" icon="{{item.icon}}"></paper-icon-button>
         </template>
+      </div>
     
     </div>
   </template>
 
   <script>
 
-    Polymer({
-      is: 'my-view3',
-      ready: function() {
-        this.imagesButtons = [
-            {icon: 'change-history', tap: 'triangulo'},
-            {icon: 'check-box-outline-blank', tap: 'cuadrado'},
-            {icon: 'radio-button-unchecked', tap: 'circulo'},
-            {icon: 'star-border', tap: 'estrella'}
-        ];
-      },
-      eventUnique: function(e) {
-        var a = this.imagesButtons;
-        var j, x, i;
-        for (i = a.length - 1; i > 0; i--) {
-          j = Math.floor(Math.random() * (i + 1));
-          x = a[i];
-          a[i] = a[j];
-          a[j] = x;
-        }
-
-        this.imagesButtons = {};
-        this.imagesButtons = a;
-      }
-    });
-
     class MyView3 extends Polymer.Element {
       static get is() { return 'my-view3'; }
+
+        ready() {
+            super.ready();
+            this.imagesButtons = [
+                {icon: 'change-history', tap: 'triangulo'},
+                {icon: 'check-box-outline-blank', tap: 'cuadrado'},
+                {icon: 'radio-button-unchecked', tap: 'circulo'},
+                {icon: 'star-border', tap: 'estrella'}
+            ];
+        }
+
+        eventUnique(e) {
+            var a = this.imagesButtons;
+            var j, x, i;
+            for (i = a.length - 1; i > 0; i--) {
+                j = Math.floor(Math.random() * (i + 1));
+                x = a[i];
+                a[i] = a[j];
+                a[j] = x;
+            }
+
+            this.imagesButtons = {};
+            this.imagesButtons = a;
+        }
     }
 
     window.customElements.define(MyView3.is, MyView3);
