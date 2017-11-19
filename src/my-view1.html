@@ -15,35 +15,64 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <dom-module id="my-view1">
   <template>
     <style include="shared-styles">
-      :host {
-        display: block;
 
-        padding: 10px;
+      h1{
+        text-align: center;
+      }
+      #container {
+        display: flex;
+        padding-left: 50%;
+      }
+      paper-button {
+        font-weight: normal;
+        font-size: 20px;
+        -webkit-font-smoothing: antialiased;
+      }      
+      paper-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+      paper-button.green:hover {
+        background-color: var(--paper-green-500);
+      }
+      paper-button.red {
+        background-color: var(--paper-red-700);
+        color: white;
+      }
+      paper-button.red:hover {
+        background-color: var(--paper-red-700);
+      }
+      paper-button.disabled {
+        color: white;
       }
     </style>
-
+    
     <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-
-    <div>
-      <icon-toggle></icon-toggle>
+      <div class="circle">
+        <a>1</a>
+      </div>
+      <H1>Observe la siguiente frase</H1>
+      <br></br>
+      <div class="card">
+        <h1>"Cuadrado"</h1>
+        <h1>La habitación tiene forma cuadrada.</h1>  
+      </div>
+      <br></br>
+      <br></br>
+      <div style="text-align: center;">
+        <h2>¿Se comprendio la oración?</h2>
+        <paper-button toggles raised class="green">Si</paper-button>
+        <paper-button toggles raised class="red">No</paper-button>
+      </div>
     </div>
-    
-      <paper-icon-button icon="favorite"></paper-icon-button>
-      <paper-icon-button icon="menu"></paper-icon-button>
-      <paper-icon-button icon="star"></paper-icon-button>
-    
-    </div> 
-  </template>
+   
 
+  </template>
   <script>
     class MyView1 extends Polymer.Element {
       static get is() { return 'my-view1'; }
