@@ -35,11 +35,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-icon icon="av:volume-up"></iron-icon>
       </div>
-      <h1>Seleccione la opción correcta</h1>
+      <div style="text-align: center;">
+        <h1>Seleccione la opción correcta</h1>
 
         <template id="resultList" is="dom-repeat" items="{{imagesButtons}}">
           <paper-icon-button on-tap="eventUnique" icon="{{item.icon}}"></paper-icon-button>
         </template>
+      </div>
     
     </div>
   </template>
