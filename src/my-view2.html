@@ -29,9 +29,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Favor de decir su nombre completo</p>
     </div>
     <div class="footer">
-      <paper-button raised class="green" on-click="handleClick">Repetir</paper-button>
+      <paper-button raised class="green" on-tap="handleClick">Repetir</paper-button>
     </div>
-    <voice-player autoplay id="audio-intro" accent="es-ES" text="Bienvenido a la Interfaz Auditiva. Favor de decir su nombre completo"></voice-player>
+    <voice-player autoplay id="audioIntro" accent="es-ES" text="Bienvenido a la Interfaz Auditiva. Favor de decir su nombre completo"></voice-player>
   </template>
 
   <script>
@@ -40,22 +40,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         handleClick() {
             console.log('Repetir Audio');
-            var form = document.querySelector('#audio-intro');
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                form.speak();
-            });
+            var element = this.$.audioIntro;
+                element.speak();
         }
+
+        connectedCallback(){
+            super.connectedCallback();
+            console.log('connectedCallback');
+        }
+
     }
-
-    /*var form = document.querySelector('#mi-form'),
-        element = document.querySelector('#mi-elemento');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        element.speak();
-    });*/
 
     window.customElements.define(MyView2.is, MyView2);
   </script>
