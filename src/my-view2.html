@@ -40,6 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
     <voice-player id="audioIntro" accent="es-ES" text="Bienvenido a la Interfaz Auditiva. Favor de decir su nombre completo"></voice-player>
       <voice-recognition id="audioRecord"></voice-recognition>
+      <voice-button on-click="grabarStart"cloud-speech-api-key="YOUR_API_KEY_HERE" autodetect></voice-button>
       <paper-input id="audioText" readonly always-float-label label="Reconocimiento de Voz"></paper-input>
 
   </template>
@@ -56,11 +57,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         grabarStart() {
             console.log('Grabar Audio');
-            var element = this.$.audioRecord;
+            /*var element = this.$.audioRecord;
             element.start();
             var textOut = this.$.audioText;
             textOut.textContent = element.detail;
-            console.log(element.detail);
+            console.log(element.detail);*/
+            document.addEventListener('WebComponentsReady', function() {        
+              var voiceEl = document.querySelector('voice-button');
+              // listen for speech events
+              voiceEl.addEventListener('speech', function(event){
+                // event.detail.speechResult
+              })
+            });
 
             /*element.addEventListener('result', function(e) {
                 var textOut = this.$.audioText;
@@ -70,6 +78,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 console.log('Audio STOP');
                 var element = this.$.audioRecord;
                 element.stop();
+
+                
                 console.log(element.detail);
             }
 
