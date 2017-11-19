@@ -1,0 +1,83 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+
+      h1{
+        text-align: center;
+      }
+      #container {
+        display: flex;
+        padding-left: 50%;
+      }
+      paper-button {
+        font-weight: normal;
+        font-size: 20px;
+        -webkit-font-smoothing: antialiased;
+      }      
+      paper-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+      paper-button.green:hover {
+        background-color: var(--paper-green-500);
+      }
+      paper-button.red {
+        background-color: var(--paper-red-700);
+        color: white;
+      }
+      paper-button.red:hover {
+        background-color: var(--paper-red-700);
+      }
+      paper-button.disabled {
+        color: white;
+      }
+    </style>
+    
+    <div class="card">
+      <div class="circle">
+        <a>1</a>
+      </div>
+      <H1>Observe la siguiente frase</H1>
+      <br></br>
+      <div class="card">
+        <h1>"Cuadrado"</h1>
+        <h1>La habitación tiene forma cuadrada.</h1>  
+      </div>
+      <br></br>
+      <br></br>
+      <div style="text-align: center;">
+        <h2>¿Se comprendio la oración?</h2>
+        <paper-button toggles raised class="green">Si</paper-button>
+        <paper-button toggles raised class="red">No</paper-button>
+      </div>
+    </div>
+   
+
+  </template>
+  <script>
+    class MyView1 extends Polymer.Element {
+      static get is() { return 'my-view1'; }
+    }
+
+    window.customElements.define(MyView1.is, MyView1);
+  </script>
+</dom-module>

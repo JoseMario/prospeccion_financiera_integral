@@ -1,0 +1,81 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/av-icons.html">
+
+<dom-module id="my-view3">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+    paper-icon-button {
+      width: 150px;
+      height: 150px;
+    }
+    </style>
+
+    <div class="card">
+      <div class="circle">Cognitiva 
+
+        <iron-icon icon="av:volume-up"></iron-icon>
+      </div>
+      <div style="text-align: center;">
+        <h1>Seleccione la opción correcta</h1>
+
+        <template id="resultList" is="dom-repeat" items="{{imagesButtons}}">
+          <paper-icon-button on-tap="eventUnique" icon="{{item.icon}}"></paper-icon-button>
+        </template>
+      </div>
+    
+    </div>
+  </template>
+
+  <script>
+
+    class MyView3 extends Polymer.Element {
+      static get is() { return 'my-view3'; }
+
+        ready() {
+            super.ready();
+            this.imagesButtons = [
+                {icon: 'change-history', tap: 'triangulo'},
+                {icon: 'check-box-outline-blank', tap: 'cuadrado'},
+                {icon: 'radio-button-unchecked', tap: 'circulo'},
+                {icon: 'star-border', tap: 'estrella'}
+            ];
+        }
+
+        eventUnique(e) {
+            var a = this.imagesButtons;
+            var j, x, i;
+            for (i = a.length - 1; i > 0; i--) {
+                j = Math.floor(Math.random() * (i + 1));
+                x = a[i];
+                a[i] = a[j];
+                a[j] = x;
+            }
+
+            this.imagesButtons = {};
+            this.imagesButtons = a;
+        }
+    }
+
+    window.customElements.define(MyView3.is, MyView3);
+  </script>
+</dom-module>
