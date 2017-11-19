@@ -18,7 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <dom-module id="my-view1">
-  <template>
+  <template id="resultList" is="dom-repeat"> 
     <style include="shared-styles">
 
       h1{
@@ -60,20 +60,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <br></br>
       <div class="card">
         <h1>"Cuadrado"</h1>
-        <h1>La habitación tiene forma cuadrada.</h1>  
+
+        <template id="resultList" is="dom-repeat" items="{{textoDinamico}}">
+          <h1>{{this.textoDinamico}}</h1> 
+          <br></br>
+          <br></br>
+        </template>
+
       </div>
-      <br></br>
-      <br></br>
-      <div style="text-align: center;">
+      <div style="text-align: center;">    
         <h2>¿Se comprendio la oración?</h2>
-        <paper-button toggles raised class="green">Si</paper-button>
-        <paper-button toggles raised class="red">No</paper-button>
+        <paper-button id="green_id" toggles on-click="cambiarTexto" raised class="green">Si</paper-button>
+        <paper-button id="red_id" toggles on-click="MostrarAuditiva" raised class="red">No</paper-button>
       </div>
+      
     </div>
    
 
   </template>
   <script>
+
+    Polymer({
+      is: 'my-view1',
+      cambiarTexto: function(e) {
+        textoDinamico: {'La habitación tiene forma cuadrada'};
+      }, 
+      MostrarAuditiva: function(e){
+
+      }
+    });    
+
     class MyView1 extends Polymer.Element {
       static get is() { return 'my-view1'; }
     }
